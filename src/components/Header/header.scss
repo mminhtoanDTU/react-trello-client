@@ -1,0 +1,10 @@
+$bgcolor: #0079bf;
+$header-height: 44px;
+
+.header {
+    padding: 0 20px;
+    min-height: $header-height;
+    max-height: $header-height;
+    // background-color: darken($bgcolor, 5%);
+    background-color: rgba(0, 0, 0, 0.2);
+}

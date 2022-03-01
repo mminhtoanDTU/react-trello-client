@@ -1,0 +1,48 @@
+.board {
+    &-main {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    &-header {
+        height: 40px;
+        padding: 8px 4px;
+    }
+
+    &-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+    }
+
+    &-content {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        position: relative;
+    }
+
+    &-canvas {
+        flex-grow: 1;
+        position: relative;
+    }
+
+    &-columns {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+
+        margin-bottom: var(--gap);
+        padding-bottom: var(--gap);
+
+        overflow-x: auto;
+        overflow-y: hidden;
+        white-space: nowrap;
+    }
+}
