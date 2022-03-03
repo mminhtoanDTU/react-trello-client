@@ -1,13 +1,12 @@
 import React from 'react'
-import { BoardColumn, Header } from './components'
-import './App.scss'
-import { WorkPage } from './pages'
+import { Header, BoardMain } from './components'
+import 'scss/index.scss'
 
 function App() {
     return (
-        <div className="app theme-purple">
+        <div className="app theme-orange">
             <Header />
-            <WorkPage />
+            <BoardMain />
         </div>
     )
 }
