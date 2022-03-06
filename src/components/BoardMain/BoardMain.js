@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
-import { Column } from 'components'
 import { initialData } from 'actions/initialData'
+import { Column } from 'components'
 import { isEmpty } from 'lodash'
-import './BoardMain.scss'
+import React, { useEffect, useState } from 'react'
+import { Container, Draggable } from 'react-smooth-dnd'
 import { mapOrder } from 'utilities/sorts'
+import './BoardMain.scss'
 
 function BoardMain() {
     const [board, setBoard] = useState({})
@@ -14,6 +15,10 @@ function BoardMain() {
         setBoard(boardFromDB)
         setColumns(mapOrder(boardFromDB.columns, boardFromDB.columnOrder, 'id'))
     }, [])
+
+    const onColumnDrop = (dropResult) => {
+        console.log(dropResult)
+    }
 
     if (isEmpty(board)) {
         return <div>Board Not found</div>
@@ -26,9 +31,23 @@ function BoardMain() {
                     <div className="board-header">Board header</div>
                     <div className="board-canvas">
                         <div className="board-columns scroll-custom">
-                            {columns.map((column) => (
-                                <Column key={column.id} column={column} />
-                            ))}
+                            <Container
+                                orientation="horizontal"
+                                onDrop={onColumnDrop}
+                                dragHandleSelector=".column-drag-handle"
+                                getChildPayload={(index) => columns[index]}
+                                dropPlaceholder={{
+                                    animationDuration: 150,
+                                    showOnTop: true,
+                                    className: 'column-drop-preview',
+                                }}
+                            >
+                                {columns.map((column) => (
+                                    <Draggable key={column.id}>
+                                        <Column column={column} />
+                                    </Draggable>
+                                ))}
+                            </Container>
                         </div>
                     </div>
                 </div>

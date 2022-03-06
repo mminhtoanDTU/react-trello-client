@@ -40,9 +40,16 @@
 
         margin-bottom: var(--gap);
         padding-bottom: var(--gap);
+        padding-left: 10px;
 
         overflow-x: auto;
         overflow-y: hidden;
         white-space: nowrap;
     }
+}
+
+.column-drop-preview {
+    background-color: rgba(150, 150, 200, 0.1);
+    border: 1px dashed #abc;
+    margin: 5px;
 }

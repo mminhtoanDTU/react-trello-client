@@ -15,7 +15,7 @@ export const initialData = {
                             boardId: 'board-1',
                             columnId: 'column-1',
                             title: 'Do exercise 1',
-                            cover: null,
+                            cover: 'https://images.unsplash.com/photo-1646081499142-3c2945cafdc1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80',
                         },
                         {
                             id: 'card-2',

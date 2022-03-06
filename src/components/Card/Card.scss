@@ -1,8 +1,21 @@
+@import 'scss/variable';
+
 .card {
     background-color: #fff;
     min-height: 34px;
     margin-bottom: 8px;
     border-radius: 3px;
     line-height: 1.5;
-    padding: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    z-index: 2;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+    &-cover {
+    }
+
+    &-title {
+        padding: $gap;
+        display: block;
+    }
 }

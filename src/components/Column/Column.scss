@@ -3,9 +3,10 @@
 .column {
     display: inline-block;
     min-width: 272px;
+    max-width: 272px;
     height: 100%;
     margin: 0 4px;
-    padding: 8px;
+    padding: 8px 0;
 
     white-space: nowrap;
     vertical-align: top;
@@ -24,10 +25,10 @@
     &__header {
         padding: 10px 8px;
         min-height: 20px;
+        cursor: grab;
     }
 
     &__list {
-        list-style: none;
         padding: 0 4px;
         margin: 0 4px;
         overflow-x: hidden;
@@ -51,4 +52,20 @@
             user-select: none;
         }
     }
+}
+
+.card-ghost {
+    transition: transform 0.18s ease;
+    transform: rotateZ(5deg);
+}
+
+.card-ghost-drop {
+    transition: transform 0.18s ease-in-out;
+    transform: rotateZ(0deg);
+}
+
+.card-drop-preview {
+    background-color: rgba(150, 150, 200, 0.1);
+    border: 1px dashed #abc;
+    margin: 5px;
 }
