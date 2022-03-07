@@ -4,6 +4,7 @@ import { isEmpty } from 'lodash'
 import React, { useEffect, useState } from 'react'
 import { Container, Draggable } from 'react-smooth-dnd'
 import { mapOrder } from 'utilities/sorts'
+import { applyDrag } from 'utilities/dragDrop'
 import './BoardMain.scss'
 
 function BoardMain() {
@@ -17,7 +18,24 @@ function BoardMain() {
     }, [])
 
     const onColumnDrop = (dropResult) => {
-        console.log(dropResult)
+        let newColumn = [...columns]
+        let newBoard = { ...board }
+        newColumn = applyDrag(newColumn, dropResult)
+        newBoard.columnOrder = newColumn.map((c) => c.id)
+        newBoard.columns = newColumn
+        setColumns(newColumn)
+        setBoard(newBoard)
+    }
+
+    const onCardDrop = (columnId, cardResult) => {
+        if (cardResult.addedIndex !== null || cardResult.removedIndex !== null) {
+            let newColumn = [...columns]
+            let currentColumn = newColumn.find((c) => c.id === columnId)
+            currentColumn.cards = applyDrag(currentColumn.cards, cardResult)
+            currentColumn.cardOrder = currentColumn.cards.map((c) => c.id)
+
+            setColumns(newColumn)
+        }
     }
 
     if (isEmpty(board)) {
@@ -44,10 +62,14 @@ function BoardMain() {
                             >
                                 {columns.map((column) => (
                                     <Draggable key={column.id}>
-                                        <Column column={column} />
+                                        <Column column={column} onCardDrop={onCardDrop} />
                                     </Draggable>
                                 ))}
                             </Container>
+                            <div className="column-add-another">
+                                <i className="fa fa-plus icon" />
+                                Thêm thẻ
+                            </div>
                         </div>
                     </div>
                 </div>

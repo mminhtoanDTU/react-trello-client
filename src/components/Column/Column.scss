@@ -1,10 +1,8 @@
 @import 'scss/variable';
 
 .column {
-    display: inline-block;
     min-width: 272px;
     max-width: 272px;
-    height: 100%;
     margin: 0 4px;
     padding: 8px 0;
 
@@ -16,7 +14,7 @@
         border-radius: $border-radius;
         display: flex;
         flex-direction: column;
-        max-height: 100%;
+        max-height: calc(100vh - 120px);
         position: relative;
         white-space: normal;
         width: 100%;
@@ -33,7 +31,6 @@
         margin: 0 4px;
         overflow-x: hidden;
         overflow-y: auto;
-        z-index: 1;
     }
 
     &__footer {
@@ -44,12 +41,17 @@
             border-radius: $border-radius;
             color: #5e6c84;
             display: block;
-            flex: 1 0 auto;
-            margin: 2px 0 8px 8px;
             padding: 4px 8px;
+            margin: 0 8px;
             text-decoration: none;
             -webkit-user-select: none;
             user-select: none;
+            transition: all 0.2s linear;
+
+            &:hover {
+                background-color: #d9dce2;
+                cursor: pointer;
+            }
         }
     }
 }
@@ -57,11 +59,13 @@
 .card-ghost {
     transition: transform 0.18s ease;
     transform: rotateZ(5deg);
+    font-weight: bold;
 }
 
 .card-ghost-drop {
     transition: transform 0.18s ease-in-out;
     transform: rotateZ(0deg);
+    font-weight: bold;
 }
 
 .card-drop-preview {

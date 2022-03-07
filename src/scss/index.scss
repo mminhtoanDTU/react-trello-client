@@ -5,6 +5,7 @@
 body {
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
+    color: #333;
 }
 
 #root {
@@ -82,4 +83,9 @@ body {
         background: #bfc2cd;
         border-radius: 10px;
     }
+}
+
+.icon {
+    font-size: 14px;
+    margin-right: 8px;
 }

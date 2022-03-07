@@ -4,12 +4,9 @@ import './Column.scss'
 import { mapOrder } from 'utilities/sorts'
 import { Container, Draggable } from 'react-smooth-dnd'
 
-function BoardColumn({ column }) {
+function BoardColumn({ column, onCardDrop }) {
     const cards = mapOrder(column.cards, column.cardOrder, 'id')
 
-    const onCardDrop = (cardResult) => {
-        console.log(cardResult)
-    }
     return (
         <div className="column">
             <div className="column__content">
@@ -17,7 +14,7 @@ function BoardColumn({ column }) {
                 <div className="column__list scroll-custom-fancy">
                     <Container
                         groupName="col"
-                        onDrop={onCardDrop}
+                        onDrop={(dropResult) => onCardDrop(column.id, dropResult)}
                         getChildPayload={(index) => cards[index]}
                         dragClass="card-ghost"
                         dropClass="card-ghost-drop"
@@ -36,7 +33,10 @@ function BoardColumn({ column }) {
                     </Container>
                 </div>
                 <div className="column__footer">
-                    <div className="column__footer-add">Thêm thẻ</div>
+                    <div className="column__footer-add">
+                        <i className="fa fa-plus icon" />
+                        Thêm thẻ
+                    </div>
                 </div>
             </div>
         </div>

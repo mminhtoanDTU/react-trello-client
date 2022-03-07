@@ -4,7 +4,7 @@ import 'scss/index.scss'
 
 function App() {
     return (
-        <div className="app theme-orange">
+        <div className="app theme-purple">
             <Header />
             <BoardMain />
         </div>
