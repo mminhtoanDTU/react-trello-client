@@ -10,7 +10,7 @@
     vertical-align: top;
 
     &__content {
-        background-color: #ebecf0;
+        background-color: $bg-column;
         border-radius: $border-radius;
         display: flex;
         flex-direction: column;
