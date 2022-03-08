@@ -6,6 +6,7 @@ import { Container, Draggable } from 'react-smooth-dnd'
 import { mapOrder } from 'utilities/sorts'
 import { applyDrag } from 'utilities/dragDrop'
 import './BoardMain.scss'
+import ButtonAddColumn from 'components/ButtonAddColumn/ButtonAddColumn'
 
 function BoardMain() {
     const [board, setBoard] = useState({})
@@ -38,6 +39,18 @@ function BoardMain() {
         }
     }
 
+    const handleAddNewColumn = (value) => {
+        let newColumn = [...columns]
+        newColumn.push(value)
+
+        let newBoard = { ...board }
+        newBoard.columnOrder = newColumn.map((c) => c.id)
+        newBoard.columns = newColumn
+
+        setColumns(newColumn)
+        setBoard(newBoard)
+    }
+
     if (isEmpty(board)) {
         return <div>Board Not found</div>
     }
@@ -66,10 +79,7 @@ function BoardMain() {
                                     </Draggable>
                                 ))}
                             </Container>
-                            <div className="column-add-another">
-                                <i className="fa fa-plus icon" />
-                                Thêm thẻ
-                            </div>
+                            <ButtonAddColumn onNewColumn={handleAddNewColumn} />
                         </div>
                     </div>
                 </div>

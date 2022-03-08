@@ -1,0 +1,68 @@
+@import 'scss/variable';
+
+.add-column {
+    margin: 8px 4px;
+    max-width: $column-width;
+    min-width: $column-width;
+    padding: 5px;
+
+    border-radius: 3px;
+    color: white;
+    transition: all 0.2s linear;
+    user-select: none;
+    background-color: $bg-column;
+
+    &__open {
+        padding: 6px 15px;
+        display: none;
+    }
+
+    &__input {
+        width: 100%;
+        padding: 5px 10px;
+        border: 2px solid $c-blue;
+        margin-bottom: 3px;
+        border-radius: $border-radius;
+    }
+
+    &__control {
+        &-btn {
+            background-color: $c-blue;
+            text-decoration: none;
+            border-radius: $border-radius;
+            padding: 5px 12px;
+            margin-right: 5px;
+            color: white;
+            cursor: pointer;
+
+            &:hover {
+                background-color: darken($c-blue, 7);
+            }
+        }
+
+        .fa-close {
+            font-size: 18px;
+            padding: 7px;
+            color: #44546f;
+            cursor: pointer;
+        }
+    }
+}
+
+.add-column.is-idle {
+    background-color: rgba(255, 255, 255, 0.25);
+
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.35);
+        cursor: pointer;
+    }
+
+    .add-column__open {
+        display: block;
+    }
+
+    .add-column__input,
+    .add-column__control {
+        display: none;
+    }
+}
