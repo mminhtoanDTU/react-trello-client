@@ -24,6 +24,63 @@
         padding: 10px 8px;
         min-height: 20px;
         cursor: grab;
+        display: flex;
+        align-items: center;
+
+        &-title {
+            flex: 1;
+            margin-right: 8px;
+
+            .input-editable {
+                border: none;
+                background-color: inherit;
+                font-size: inherit;
+                font-weight: inherit;
+            }
+        }
+
+        &-dropdown {
+            .dropdown-toggle {
+                font-size: 16px;
+                padding: 0 8px;
+                background-color: $bg-column;
+                color: $text-color;
+                border-color: transparent;
+                &::after {
+                    content: '...';
+                    border: none;
+                    font-weight: bold;
+                    letter-spacing: 1px;
+                }
+
+                &:hover {
+                    color: $text-color;
+                    background-color: darken($bg-column, 10);
+                    border-color: darken($bg-column, 10);
+                }
+            }
+
+            .dropdown-menu {
+                font-size: 14px;
+            }
+
+            &.show .btn-primary.dropdown-toggle {
+                color: $text-color;
+                background-color: darken($bg-column, 20);
+                border-color: darken($bg-column, 20);
+            }
+
+            .dropdown-item:active {
+                color: $text-color;
+                background-color: darken($bg-column, 10);
+            }
+
+            .btn-primary:focus {
+                color: $text-color;
+                background-color: transparent;
+                border-color: transparent;
+            }
+        }
     }
 
     &__list {

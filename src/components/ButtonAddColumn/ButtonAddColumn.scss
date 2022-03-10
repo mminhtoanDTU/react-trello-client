@@ -15,6 +15,12 @@
     &__open {
         padding: 6px 15px;
         display: none;
+        text-decoration: none;
+        color: inherit;
+
+        &:hover {
+            color: white;
+        }
     }
 
     &__input {

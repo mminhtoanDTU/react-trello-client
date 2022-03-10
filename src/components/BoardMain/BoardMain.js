@@ -51,6 +51,25 @@ function BoardMain() {
         setBoard(newBoard)
     }
 
+    const handleUpdateColumn = (newColumnToUpdate) => {
+        const columnIdToUpdate = newColumnToUpdate.id
+
+        let newColumn = [...columns]
+        const columnIndexToUpdate = newColumn.findIndex((i) => i.id === columnIdToUpdate)
+        if (newColumnToUpdate._destroy) {
+            newColumn.splice(columnIndexToUpdate, 1)
+        } else {
+            newColumn.splice(columnIndexToUpdate, 1, newColumnToUpdate)
+        }
+
+        let newBoard = { ...board }
+        newBoard.columnOrder = newColumn.map((c) => c.id)
+        newBoard.columns = newColumn
+
+        setColumns(newColumn)
+        setBoard(newBoard)
+    }
+
     if (isEmpty(board)) {
         return <div>Board Not found</div>
     }
@@ -75,7 +94,11 @@ function BoardMain() {
                             >
                                 {columns.map((column) => (
                                     <Draggable key={column.id}>
-                                        <Column column={column} onCardDrop={onCardDrop} />
+                                        <Column
+                                            column={column}
+                                            onCardDrop={onCardDrop}
+                                            onUpdateColumn={handleUpdateColumn}
+                                        />
                                     </Draggable>
                                 ))}
                             </Container>
