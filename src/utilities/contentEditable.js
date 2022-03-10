@@ -1,4 +1,5 @@
 const selectAllInLineText = (e) => {
+    console.log(e)
     e.target.focus()
     e.target.select()
 }

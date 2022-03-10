@@ -85,6 +85,7 @@ function BoardMain() {
                                 orientation="horizontal"
                                 onDrop={onColumnDrop}
                                 dragHandleSelector=".column-drag-handle"
+                                nonDragAreaSelector=".input-editable:focus"
                                 getChildPayload={(index) => columns[index]}
                                 dropPlaceholder={{
                                     animationDuration: 150,
